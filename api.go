@@ -24,7 +24,7 @@ func makeHTTPHandleFunc(f apiFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if err := f(w, r); err != nil {
 			//handle error
-			WriteJSON(w, http.StatusBadRequest, ApiError{err.Error()})
+			WriteJSON(w, http.StatusBadRequest, ApiError{Error: err.Error()})
 		}
 	}
 }
